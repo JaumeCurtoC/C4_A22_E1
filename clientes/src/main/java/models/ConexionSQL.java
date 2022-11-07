@@ -13,19 +13,27 @@ public class ConexionSQL {
 
 	public static Connection connection;
 	private Credentials credentials = new Credentials();
-	public void connectar() {
+
+	public void conectar() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// Password retirada por seguridad
 			connection = DriverManager.getConnection(
-					"jdbc:mysql://"+ credentials.getIp()+":3306?useTimezone=true&serverTimezone=UTC", credentials.getUsuario(), credentials.getPassword());
+					"jdbc:mysql://" + credentials.getIp() + ":3306?useTimezone=true&serverTimezone=UTC",
+					credentials.getUsuario(), credentials.getPassword());
+
+			// Indicar la base de datos
+			String querydb = "USE clientesVideo;";
+			Statement stdb = connection.createStatement();
+			stdb.executeUpdate(querydb);
+
 			System.out.println("Server Connected");
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("No se ha podido conectar con la base de datos.");
 			System.out.println(ex);
 		}
 	}
-	
+
 	public void crearDB() {
 		try {
 			// Eliminar la base de datos en caso que exista
@@ -39,22 +47,22 @@ public class ConexionSQL {
 			String querydb = "USE clientesVideo;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(querydb);
-			
+
 			System.out.println("Base de datos creada.");
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			System.out.println("No se ha podido crear la base de datos.");
 			Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
+
 	// M�todo para cerrar la conexi�n con la base de datos
-		public void closeConnection() {
-			try {
-				connection.close();
-				System.out.println("Se ha finalizado la conexi�n con el servidor");
-			}catch(SQLException ex) {
-				Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
-			}
+	public void closeConnection() {
+		try {
+			connection.close();
+			System.out.println("Se ha finalizado la conexi�n con el servidor");
+		} catch (SQLException ex) {
+			Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
 
 }

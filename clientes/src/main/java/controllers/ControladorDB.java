@@ -12,7 +12,7 @@ public class ControladorDB {
 	}
 
 	public void iniciarDB() {
-		modelo.connectar();
+		modelo.conectar();
 		modelo.crearDB();
 		c.createTable();
 		c.insertClientes();
