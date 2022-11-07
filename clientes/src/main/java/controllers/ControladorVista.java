@@ -19,8 +19,9 @@ public class ControladorVista implements ActionListener {
 	private PanelOpciones panelOpciones;
 	private PanelFormularios panelFormularios;
 	private ControladorDB controlDB;
-	
-	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios, ControladorDB conDb) {
+
+	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios,
+			ControladorDB conDb) {
 		super();
 		this.cframe = cframe;
 		this.panelOpciones = panelOpciones;
@@ -35,7 +36,7 @@ public class ControladorVista implements ActionListener {
 		cframe.setBounds(100, 100, 345, 350);
 		cframe.setVisible(true);
 	}
-	
+
 	public void agregarEventos() {
 		panelOpciones.btnCrearCliente.addActionListener(this);
 		panelOpciones.btnBuscarCliente.addActionListener(this);
@@ -47,39 +48,39 @@ public class ControladorVista implements ActionListener {
 		panelFormularios.borrarButton.addActionListener(this);
 		panelFormularios.actualizarButton.addActionListener(this);
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if(panelOpciones.btnBuscarCliente == e.getSource()) {
+
+		if (panelOpciones.btnBuscarCliente == e.getSource()) {
 			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "buscar");
-			
-		} else if(panelOpciones.btnCrearCliente == e.getSource()) {
+
+		} else if (panelOpciones.btnCrearCliente == e.getSource()) {
 			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "crear");
-			
-		} else if(panelOpciones.btnEliminarCliente  == e.getSource()) {
+
+		} else if (panelOpciones.btnEliminarCliente == e.getSource()) {
 			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "borrar");
-			
-		} else if(panelOpciones.btnModificarCliente == e.getSource()) {
+
+		} else if (panelOpciones.btnModificarCliente == e.getSource()) {
 			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "actualizar");
-			
-		} else if(panelOpciones.btnListarClientes == e.getSource()) {
-			//función que lista los usuarios
-			
-		} else if(panelFormularios.crearButton == e.getSource()) {
+
+		} else if (panelOpciones.btnListarClientes == e.getSource()) {
+			listar();
+
+		} else if (panelFormularios.crearButton == e.getSource()) {
 			crear();
-			
-		} else if(panelFormularios.borrarButton == e.getSource()) {
+
+		} else if (panelFormularios.borrarButton == e.getSource()) {
 			String dni = panelFormularios.borrarTexfield.getText();
-			
-		} else if(panelFormularios.buscarButton == e.getSource()) {
+
+		} else if (panelFormularios.buscarButton == e.getSource()) {
 			buscar();
-			
-		} else if(panelFormularios.actualizarButton == e.getSource()) {
+
+		} else if (panelFormularios.actualizarButton == e.getSource()) {
 			String nombre = panelFormularios.actualizarNombre.getText();
 			String apellidos = panelFormularios.actualizarApellidos.getText();
 			String dni = panelFormularios.actualizarDNI.getText();
@@ -87,22 +88,22 @@ public class ControladorVista implements ActionListener {
 			String fecha = panelFormularios.actualizarFecha.getText();
 		}
 	}
-	
+
 	public void selectCard(JPanel container, String carta) {
-		CardLayout cl = (CardLayout)container.getLayout();
+		CardLayout cl = (CardLayout) container.getLayout();
 		cl.show(container, carta);
 	}
-	
+
 	public void nextImage(JPanel container) {
 		CardLayout cl = (CardLayout) container.getLayout();
 		cl.next(container);
 	}
-	
+
 	public void firstImage(JPanel container) {
 		CardLayout cl = (CardLayout) container.getLayout();
 		cl.first(container);
 	}
-	
+
 	public void buscar() {
 		Connection c = ConexionSQL.connection;
 		int dni = Integer.parseInt(panelFormularios.buscarTextfield.getText());
@@ -121,12 +122,12 @@ public class ControladorVista implements ActionListener {
 			}
 			nextImage(cframe.panelContainer);
 			cframe.labelResultados.setText(data);
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error al insertar datos.");
 		}
 	}
-	
+
 	public void crear() {
 		// INSERT VALUES
 		Connection c = ConexionSQL.connection;
@@ -135,15 +136,15 @@ public class ControladorVista implements ActionListener {
 		int dni = Integer.parseInt(panelFormularios.crearDni.getText());
 		String direccion = panelFormularios.crearDireccion.getText();
 		String fecha = panelFormularios.crearFecha.getText();
-		
+
 		try {
-			String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+
-					"('"+ nombre +"','"+ apellidos +"', '" + direccion + "',' " + dni + "', '" + fecha + "');";
+			String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values" + "('" + nombre
+					+ "','" + apellidos + "', '" + direccion + "',' " + dni + "', '" + fecha + "');";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
 			System.out.println("Datos insertados con exito!");
-		}catch(SQLException ex) {
+		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error al insertar datos.");
 		}
@@ -152,12 +153,32 @@ public class ControladorVista implements ActionListener {
 	public void borrar() {
 		// DELETE
 	}
-	
+
 	public void modificar() {
 		// ALTER TABLE
 	}
-	
+
 	public void listar() {
-		// SELECT *
+		Connection c = ConexionSQL.connection;
+		String data = "";
+		try {
+			String query = "SELECT * FROM clientes;";
+			Statement st = c.createStatement();
+			java.sql.ResultSet resultSet;
+			resultSet = st.executeQuery(query);
+			while (resultSet.next()) {
+				data += "nombre: " + resultSet.getString("nombre");
+				data += "<br/>Apellidos: " + resultSet.getString("apellido");
+				data += "<br/>Direccion: " + resultSet.getString("direccion");
+				data += "<br/>Dni: " + resultSet.getString("dni");
+				data += "<br/>Fecha: " + resultSet.getString("fecha");
+				data += "<br/>-----------------<br/>";
+			}
+			nextImage(cframe.panelContainer);
+			cframe.labelResultados.setText("<html>" + data + "</html>");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error al insertar datos.");
+		}
 	}
 }

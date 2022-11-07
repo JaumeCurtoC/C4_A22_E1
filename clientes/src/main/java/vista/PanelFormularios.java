@@ -21,11 +21,14 @@ public class PanelFormularios extends JPanel {
 	public JTextField actualizarDireccion;
 	public JTextField actualizarDNI;
 	public JTextField actualizarFecha;
+	public JTextField dniActual;
 	public JButton crearButton;
 	public JButton buscarButton;
 	public JButton borrarButton;
 	public JButton actualizarButton;
 	public JButton listarButton;
+	private JTextField textField;
+	private JLabel lblDniActual;
 
 	public PanelFormularios() {
 		setLayout(new CardLayout(0, 0));
@@ -126,53 +129,62 @@ public class PanelFormularios extends JPanel {
 		formularioActualizar.setLayout(null);
 		
 		JLabel labelNombre = new JLabel("Nombre: ");
-		labelNombre.setBounds(14, 8, 93, 14);
+		labelNombre.setBounds(14, 64, 93, 14);
 		formularioActualizar.add(labelNombre);
 		
 		actualizarNombre = new JTextField();
-		actualizarNombre.setBounds(14, 21, 120, 20);
+		actualizarNombre.setBounds(14, 80, 120, 20);
 		formularioActualizar.add(actualizarNombre);
 		actualizarNombre.setColumns(10);
 		
 		JLabel labelApellido = new JLabel("Apellido: ");
-		labelApellido.setBounds(14, 51, 69, 14);
+		labelApellido.setBounds(14, 104, 69, 14);
 		formularioActualizar.add(labelApellido);
 		
 		actualizarApellidos = new JTextField();
-		actualizarApellidos.setBounds(14, 65, 120, 20);
+		actualizarApellidos.setBounds(14, 120, 120, 20);
 		formularioActualizar.add(actualizarApellidos);
 		actualizarApellidos.setColumns(10);
 		
 		JLabel direccionLabel = new JLabel("Dirección: ");
-		direccionLabel.setBounds(14, 96, 69, 14);
+		direccionLabel.setBounds(14, 142, 69, 14);
 		formularioActualizar.add(direccionLabel);
 		
 		actualizarDireccion = new JTextField();
 		actualizarDireccion.setColumns(10);
-		actualizarDireccion.setBounds(14, 109, 120, 20);
+		actualizarDireccion.setBounds(14, 157, 120, 20);
 		formularioActualizar.add(actualizarDireccion);
 		
 		JLabel dniLabel = new JLabel("DNI: ");
-		dniLabel.setBounds(14, 144, 49, 14);
+		dniLabel.setBounds(14, 181, 49, 14);
 		formularioActualizar.add(dniLabel);
 		
 		actualizarDNI = new JTextField();
 		actualizarDNI.setColumns(10);
-		actualizarDNI.setBounds(14, 158, 120, 20);
+		actualizarDNI.setBounds(14, 198, 120, 20);
 		formularioActualizar.add(actualizarDNI);
 		
 		actualizarFecha = new JTextField();
 		actualizarFecha.setColumns(10);
-		actualizarFecha.setBounds(14, 202, 120, 20);
+		actualizarFecha.setBounds(14, 235, 120, 20);
 		formularioActualizar.add(actualizarFecha);
 		
 		JLabel fechaLabel = new JLabel("Fecha: ");
-		fechaLabel.setBounds(14, 189, 49, 14);
+		fechaLabel.setBounds(14, 219, 49, 14);
 		formularioActualizar.add(fechaLabel);
 		
 		actualizarButton = new JButton("Actualizar");
-		actualizarButton.setBounds(14, 233, 108, 23);
+		actualizarButton.setBounds(14, 266, 108, 23);
 		formularioActualizar.add(actualizarButton);
+		
+		dniActual = new JTextField();
+		dniActual.setColumns(10);
+		dniActual.setBounds(14, 35, 120, 20);
+		formularioActualizar.add(dniActual);
+		
+		lblDniActual = new JLabel("DNI actual: ");
+		lblDniActual.setBounds(14, 21, 93, 14);
+		formularioActualizar.add(lblDniActual);
 		
 		
 		

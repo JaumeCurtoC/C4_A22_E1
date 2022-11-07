@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
@@ -11,6 +12,9 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JViewport;
+
+import java.awt.FlowLayout;
 
 public class ClienteFrame extends JFrame {
 
@@ -34,20 +38,23 @@ public class ClienteFrame extends JFrame {
 		
 		/*-----------PANEL CONTAINER FORMULARIOS Y RESULTADOS --------------*/
 		panelContainer = new JPanel();
-		panelContainer.setBounds(142, 11, 177, 269);
+		panelContainer.setBounds(142, 11, 177, 299);
 		
 		panelContainer.setLayout(new CardLayout(0, 0));
 		
+		JScrollPane panelContainerResultados = new JScrollPane();
+		
+		
 		panelResultados = new JPanel();
-		panelResultados.setLayout(null);
+		panelResultados.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panelContainerResultados.setViewportView(panelResultados);
 		
 		labelResultados = new JLabel("");
-		labelResultados.setBounds(10, 5, 157, 150);
 		panelResultados.add(labelResultados);
 		
 		panelFormularios = formPanel;
 		panelContainer.add(panelFormularios);
-		panelContainer.add(panelResultados);
+		panelContainer.add(panelContainerResultados);
 		
 		contentPane.add(panelOpciones);
 		contentPane.add(panelContainer);
