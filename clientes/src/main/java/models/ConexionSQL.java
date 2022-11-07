@@ -14,11 +14,12 @@ public class ConexionSQL {
 	static Connection connection;
 	private Credentials credentials = new Credentials();
 	public void connectar() {
+		Credentials cr = new Credentials();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// Password retirada por seguridad
 			connection = DriverManager.getConnection(
-					"jdbc:mysql://192.168.1.128:3306?useTimezone=true&serverTimezone=UTC", credentials.getUsuario(), credentials.getPassword());
+					"jdbc:mysql://"+ cr.getIp()+":3306?useTimezone=true&serverTimezone=UTC", cr.getUsuario(), cr.getPassword());
 			System.out.println("Server Connected");
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("No se ha podido conectar con la base de datos.");
