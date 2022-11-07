@@ -18,6 +18,8 @@ public class ClienteFrame extends JFrame {
 	public JPanel panelOpciones;
 	public JPanel panelFormularios;
 	public JPanel panelContainer;
+	public JPanel panelResultados;
+	public JLabel labelResultados;
 
 
 	public ClienteFrame(JPanel optionPanel, JPanel formPanel) {
@@ -36,12 +38,12 @@ public class ClienteFrame extends JFrame {
 		
 		panelContainer.setLayout(new CardLayout(0, 0));
 		
-		JPanel panelResultados = new JPanel();
+		panelResultados = new JPanel();
 		panelResultados.setLayout(null);
 		
-		JLabel resultadoLabel = new JLabel("");
-		resultadoLabel.setBounds(10, 5, 157, 150);
-		panelResultados.add(resultadoLabel);
+		labelResultados = new JLabel("");
+		labelResultados.setBounds(10, 5, 157, 150);
+		panelResultados.add(labelResultados);
 		
 		panelFormularios = formPanel;
 		panelContainer.add(panelFormularios);

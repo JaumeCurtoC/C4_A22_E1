@@ -38,10 +38,15 @@ public class ControladorVista implements ActionListener {
 		panelOpciones.btnEliminarCliente.addActionListener(this);
 		panelOpciones.btnListarClientes.addActionListener(this);
 		panelOpciones.btnModificarCliente.addActionListener(this);
+		panelFormularios.crearButton.addActionListener(this);
+		panelFormularios.buscarButton.addActionListener(this);
+		panelFormularios.borrarButton.addActionListener(this);
+		panelFormularios.actualizarButton.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if(panelOpciones.btnBuscarCliente == e.getSource()) {
 			selectCard(cframe.panelFormularios, "buscar");
 			
@@ -56,6 +61,26 @@ public class ControladorVista implements ActionListener {
 			
 		} else if(panelOpciones.btnListarClientes == e.getSource()) {
 			//función que lista los usuarios
+			
+		} else if(panelFormularios.crearButton == e.getSource()) {
+			String nombre = panelFormularios.crearNombre.getText();
+			String apellidos = panelFormularios.crearApellido.getText();
+			String dni = panelFormularios.crearDni.getText();
+			String direccion = panelFormularios.crearDireccion.getText();
+			String fecha = panelFormularios.crearFecha.getText();
+			
+		} else if(panelFormularios.borrarButton == e.getSource()) {
+			String dni = panelFormularios.borrarTexfield.getText();
+			
+		} else if(panelFormularios.buscarButton == e.getSource()) {
+			String dni = panelFormularios.buscarTextfield.getText();
+			
+		} else if(panelFormularios.actualizarButton == e.getSource()) {
+			String nombre = panelFormularios.actualizarNombre.getText();
+			String apellidos = panelFormularios.actualizarApellidos.getText();
+			String dni = panelFormularios.actualizarDNI.getText();
+			String direccion = panelFormularios.actualizarDireccion.getText();
+			String fecha = panelFormularios.actualizarFecha.getText();
 		}
 	}
 	

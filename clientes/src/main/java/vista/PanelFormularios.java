@@ -9,18 +9,18 @@ import javax.swing.JTextField;
 
 public class PanelFormularios extends JPanel {
 	
-	public JTextField textField;
-	public JTextField textField_1;
-	public JTextField textField_2;
-	public JTextField textField_3;
-	public JTextField textField_4;
-	public JTextField textField_5;
-	public JTextField textField_6;
-	public JTextField nombreTextfield;
-	public JTextField apellidosTextfield;
-	public JTextField direccionTextfield;
-	public JTextField dniTextfield;
-	public JTextField fechaTextfield;
+	public JTextField crearNombre;
+	public JTextField crearApellido;
+	public JTextField crearDireccion;
+	public JTextField crearDni;
+	public JTextField crearFecha;
+	public JTextField buscarTextfield;
+	public JTextField borrarTexfield;
+	public JTextField actualizarNombre;
+	public JTextField actualizarApellidos;
+	public JTextField actualizarDireccion;
+	public JTextField actualizarDNI;
+	public JTextField actualizarFecha;
 	public JButton crearButton;
 	public JButton buscarButton;
 	public JButton borrarButton;
@@ -36,45 +36,45 @@ public class PanelFormularios extends JPanel {
 		formularioCrear.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombre: ");
-		lblNewLabel.setBounds(10, 11, 46, 14);
+		lblNewLabel.setBounds(10, 11, 73, 14);
 		formularioCrear.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 24, 124, 20);
-		formularioCrear.add(textField);
-		textField.setColumns(10);
+		crearNombre = new JTextField();
+		crearNombre.setBounds(10, 24, 124, 20);
+		formularioCrear.add(crearNombre);
+		crearNombre.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido: ");
-		lblApellido.setBounds(10, 55, 46, 14);
+		lblApellido.setBounds(10, 55, 73, 14);
 		formularioCrear.add(lblApellido);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 68, 124, 20);
-		formularioCrear.add(textField_1);
-		textField_1.setColumns(10);
+		crearApellido = new JTextField();
+		crearApellido.setBounds(10, 68, 124, 20);
+		formularioCrear.add(crearApellido);
+		crearApellido.setColumns(10);
 		
 		JLabel lblDireccin = new JLabel("Dirección: ");
 		lblDireccin.setBounds(10, 99, 63, 14);
 		formularioCrear.add(lblDireccin);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(10, 112, 124, 20);
-		formularioCrear.add(textField_2);
+		crearDireccion = new JTextField();
+		crearDireccion.setColumns(10);
+		crearDireccion.setBounds(10, 112, 124, 20);
+		formularioCrear.add(crearDireccion);
 		
 		JLabel lblDni = new JLabel("DNI: ");
 		lblDni.setBounds(10, 143, 63, 14);
 		formularioCrear.add(lblDni);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(10, 155, 124, 20);
-		formularioCrear.add(textField_3);
+		crearDni = new JTextField();
+		crearDni.setColumns(10);
+		crearDni.setBounds(10, 155, 124, 20);
+		formularioCrear.add(crearDni);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(10, 199, 124, 20);
-		formularioCrear.add(textField_4);
+		crearFecha = new JTextField();
+		crearFecha.setColumns(10);
+		crearFecha.setBounds(10, 199, 124, 20);
+		formularioCrear.add(crearFecha);
 		
 		JLabel lblFecha = new JLabel("Fecha: ");
 		lblFecha.setBounds(10, 186, 63, 14);
@@ -93,10 +93,10 @@ public class PanelFormularios extends JPanel {
 		lblNewLabel_1.setBounds(10, 11, 133, 14);
 		formularioBuscar.add(lblNewLabel_1);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(10, 24, 133, 20);
-		formularioBuscar.add(textField_5);
-		textField_5.setColumns(10);
+		buscarTextfield = new JTextField();
+		buscarTextfield.setBounds(10, 24, 133, 20);
+		formularioBuscar.add(buscarTextfield);
+		buscarTextfield.setColumns(10);
 		
 		buscarButton = new JButton("Buscar");
 		buscarButton.setBounds(10, 55, 89, 23);
@@ -111,10 +111,10 @@ public class PanelFormularios extends JPanel {
 		lblNewLabel_2.setBounds(10, 11, 130, 14);
 		formularioBorrar.add(lblNewLabel_2);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(10, 25, 130, 20);
-		formularioBorrar.add(textField_6);
-		textField_6.setColumns(10);
+		borrarTexfield = new JTextField();
+		borrarTexfield.setBounds(10, 25, 130, 20);
+		formularioBorrar.add(borrarTexfield);
+		borrarTexfield.setColumns(10);
 		
 		borrarButton = new JButton("Borrar");
 		borrarButton.setBounds(10, 56, 89, 23);
@@ -126,45 +126,45 @@ public class PanelFormularios extends JPanel {
 		formularioActualizar.setLayout(null);
 		
 		JLabel labelNombre = new JLabel("Nombre: ");
-		labelNombre.setBounds(14, 8, 69, 14);
+		labelNombre.setBounds(14, 8, 93, 14);
 		formularioActualizar.add(labelNombre);
 		
-		nombreTextfield = new JTextField();
-		nombreTextfield.setBounds(14, 21, 120, 20);
-		formularioActualizar.add(nombreTextfield);
-		nombreTextfield.setColumns(10);
+		actualizarNombre = new JTextField();
+		actualizarNombre.setBounds(14, 21, 120, 20);
+		formularioActualizar.add(actualizarNombre);
+		actualizarNombre.setColumns(10);
 		
 		JLabel labelApellido = new JLabel("Apellido: ");
 		labelApellido.setBounds(14, 51, 69, 14);
 		formularioActualizar.add(labelApellido);
 		
-		apellidosTextfield = new JTextField();
-		apellidosTextfield.setBounds(14, 65, 120, 20);
-		formularioActualizar.add(apellidosTextfield);
-		apellidosTextfield.setColumns(10);
+		actualizarApellidos = new JTextField();
+		actualizarApellidos.setBounds(14, 65, 120, 20);
+		formularioActualizar.add(actualizarApellidos);
+		actualizarApellidos.setColumns(10);
 		
 		JLabel direccionLabel = new JLabel("Dirección: ");
 		direccionLabel.setBounds(14, 96, 69, 14);
 		formularioActualizar.add(direccionLabel);
 		
-		direccionTextfield = new JTextField();
-		direccionTextfield.setColumns(10);
-		direccionTextfield.setBounds(14, 109, 120, 20);
-		formularioActualizar.add(direccionTextfield);
+		actualizarDireccion = new JTextField();
+		actualizarDireccion.setColumns(10);
+		actualizarDireccion.setBounds(14, 109, 120, 20);
+		formularioActualizar.add(actualizarDireccion);
 		
 		JLabel dniLabel = new JLabel("DNI: ");
 		dniLabel.setBounds(14, 144, 49, 14);
 		formularioActualizar.add(dniLabel);
 		
-		dniTextfield = new JTextField();
-		dniTextfield.setColumns(10);
-		dniTextfield.setBounds(14, 158, 120, 20);
-		formularioActualizar.add(dniTextfield);
+		actualizarDNI = new JTextField();
+		actualizarDNI.setColumns(10);
+		actualizarDNI.setBounds(14, 158, 120, 20);
+		formularioActualizar.add(actualizarDNI);
 		
-		fechaTextfield = new JTextField();
-		fechaTextfield.setColumns(10);
-		fechaTextfield.setBounds(14, 202, 120, 20);
-		formularioActualizar.add(fechaTextfield);
+		actualizarFecha = new JTextField();
+		actualizarFecha.setColumns(10);
+		actualizarFecha.setBounds(14, 202, 120, 20);
+		formularioActualizar.add(actualizarFecha);
 		
 		JLabel fechaLabel = new JLabel("Fecha: ");
 		fechaLabel.setBounds(14, 189, 49, 14);
