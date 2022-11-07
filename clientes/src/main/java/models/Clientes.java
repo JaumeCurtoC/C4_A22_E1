@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class Clientes {
 	// M�todo para crear la tabla
-	public static void createTable() {
+	public void createTable() {
 		Connection c = ConexionSQL.connection;
 		try {
 			// Borrar la tabla en caso que exista
@@ -33,7 +33,7 @@ public class Clientes {
 	}
 	
 	// M�todo para insertar datos en la tabla
-		public static void insertClientes() {
+		public void insertClientes() {
 			Connection c = ConexionSQL.connection;
 			try {
 				String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+

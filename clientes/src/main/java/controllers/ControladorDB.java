@@ -3,13 +3,20 @@ package controllers;
 import models.*;
 
 public class ControladorDB {
+	private ConexionSQL modelo;
+	private Clientes c;
 	
+	public ControladorDB(ConexionSQL modelo, Clientes c) {
+		this.modelo = modelo;
+		this.c = c;
+	}
+
 	public void iniciarDB() {
-		ConexionSQL.connectar();
-		ConexionSQL.crearDB();
-		Clientes.createTable();
-		Clientes.insertClientes();
-		ConexionSQL.closeConnection();
+		modelo.connectar();
+		modelo.crearDB();
+		c.createTable();
+		c.insertClientes();
+		modelo.closeConnection();
 	}
 	
 	
