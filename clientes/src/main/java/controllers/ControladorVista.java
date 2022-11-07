@@ -173,7 +173,27 @@ public class ControladorVista implements ActionListener {
 	}
 
 	public void modificar() {
-		// ALTER TABLE
+		Connection c = ConexionSQL.connection;
+		try {
+			int dniActual = Integer.parseInt(panelFormularios.dniActual.getText());
+			String nombre = panelFormularios.actualizarNombre.getText();
+			String apellidos = panelFormularios.actualizarApellidos.getText();
+			int dni = Integer.parseInt(panelFormularios.actualizarDNI.getText());
+			String direccion = panelFormularios.actualizarDireccion.getText();
+			String fecha = panelFormularios.actualizarFecha.getText();
+			
+			String query = "UPDATE clientes "+
+					//"SET nombre = '"+ nombre +"', apellido= '"+ apellidos +"', dni ="+ dni +", direccion='"+ direccion +"', fecha='"+ fecha +"'"+
+					"SET nombre = '"+nombre+"', apellido='"+apellidos+"', dni = "+dni+", direccion='"+direccion+"', fecha='"+ fecha +"'"+
+					"WHERE dni = "+ dniActual +";";
+			System.out.println(query);
+			Statement st = c.createStatement();
+			st.executeUpdate(query);
+			System.out.println("Datos insertados con exito!");
+		}catch(SQLException | NumberFormatException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error al insertar datos.");
+		}
 	}
 
 	public void listar() {
