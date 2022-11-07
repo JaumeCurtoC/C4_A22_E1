@@ -7,10 +7,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class PanelOpciones extends JPanel{
 	
-
+	public JButton btnCrearCliente;
+	public JButton btnEliminarCliente;
+	public JButton btnModificarCliente;
+	public JButton btnListarClientes;
+	public JButton btnBuscarCliente;
+	
+	
 	public PanelOpciones() {
+		
 		
 		setBounds(10, 11, 122, 239);
 		setLayout(new GridLayout(6, 1, 0, 0));
@@ -19,19 +27,19 @@ public class PanelOpciones extends JPanel{
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		add(lblNewLabel);
 		
-		JButton btnCrearCliente = new JButton("Crear cliente");
+		btnCrearCliente = new JButton("Crear cliente");
 		add(btnCrearCliente);
 		
-		JButton btnEliminarCliente = new JButton("Eliminar cliente");
+		btnEliminarCliente = new JButton("Eliminar cliente");
 		add(btnEliminarCliente);
 		
-		JButton btnModificarCliente = new JButton("Modificar cliente");
+		btnModificarCliente = new JButton("Modificar cliente");
 		add(btnModificarCliente);
 		
-		JButton btnListarClientes = new JButton("Listar clientes");
+		btnListarClientes = new JButton("Listar clientes");
 		add(btnListarClientes);
 		
-		JButton btnBuscarCliente = new JButton("Buscar cliente");
+		btnBuscarCliente = new JButton("Buscar cliente");
 		add(btnBuscarCliente);
 		
 	}

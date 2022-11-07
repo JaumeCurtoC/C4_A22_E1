@@ -14,10 +14,12 @@ import javax.swing.JTextField;
 
 public class ClienteFrame extends JFrame {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
+	public JPanel panelOpciones;
+	public JPanel panelFormularios;
 
 
-	public ClienteFrame() {
+	public ClienteFrame(JPanel optionPanel, JPanel formPanel) {
 		setTitle("Clientes CRUD");
 		//podemos meterle un nuevo método donde se hará el exit on close y se cerrará la base de datos
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,7 +31,7 @@ public class ClienteFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		/*-------PANEL OPCIONES --------------------*/
-		JPanel panelOpciones = new PanelOpciones();
+		panelOpciones = optionPanel;
 		
 		/*-----------PANEL CONTAINER FORMULARIOS Y RESULTADOS --------------*/
 		JPanel panelContainer = new JPanel();
@@ -45,7 +47,7 @@ public class ClienteFrame extends JFrame {
 		resultadoLabel.setBounds(10, 5, 157, 120);
 		panelResultados.add(resultadoLabel);
 		
-		JPanel panelFormularios = new PanelFormularios();
+		panelFormularios = formPanel;
 		panelContainer.add(panelFormularios);
 		
 		contentPane.add(panelOpciones);

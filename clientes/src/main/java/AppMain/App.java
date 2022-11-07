@@ -1,10 +1,12 @@
 package AppMain;
 import vista.*;
+import controllers.*;
 
 public class App 
 {
     public static void main( String[] args )
     {
-       ClienteFrame cf = new ClienteFrame();
+     ControladorVista cv = new ControladorVista(); 
+     cv.iniciarVista();
     }
 }
