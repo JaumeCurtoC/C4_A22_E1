@@ -20,7 +20,7 @@ public class App
         PanelFormularios pf = new PanelFormularios();
         ClienteFrame cframe = new ClienteFrame(po, pf);
 
-        ControladorVista cv = new ControladorVista(cframe, po, pf, cdb);
+        ControladorVista cv = new ControladorVista(cframe, po, pf);
 
         cv.iniciarVista();
 

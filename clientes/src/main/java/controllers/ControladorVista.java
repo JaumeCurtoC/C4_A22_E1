@@ -18,14 +18,13 @@ public class ControladorVista implements ActionListener {
 	private ClienteFrame cframe;
 	private PanelOpciones panelOpciones;
 	private PanelFormularios panelFormularios;
-	private ControladorDB controlDB;
+	private ConexionSQL conSQL = new ConexionSQL();
 	
-	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios, ControladorDB conDb) {
+	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios) {
 		super();
 		this.cframe = cframe;
 		this.panelOpciones = panelOpciones;
 		this.panelFormularios = panelFormularios;
-		this.controlDB = conDb;
 		agregarEventos();
 	}
 
@@ -71,13 +70,19 @@ public class ControladorVista implements ActionListener {
 			//función que lista los usuarios
 			
 		} else if(panelFormularios.crearButton == e.getSource()) {
+			conSQL.conectar();
 			crear();
+			conSQL.closeConnection();
 			
 		} else if(panelFormularios.borrarButton == e.getSource()) {
-			String dni = panelFormularios.borrarTexfield.getText();
+			conSQL.conectar();
+			borrar();
+			conSQL.closeConnection();
 			
 		} else if(panelFormularios.buscarButton == e.getSource()) {
+			conSQL.conectar();
 			buscar();
+			conSQL.closeConnection();
 			
 		} else if(panelFormularios.actualizarButton == e.getSource()) {
 			String nombre = panelFormularios.actualizarNombre.getText();
@@ -130,20 +135,20 @@ public class ControladorVista implements ActionListener {
 	public void crear() {
 		// INSERT VALUES
 		Connection c = ConexionSQL.connection;
-		String nombre = panelFormularios.crearNombre.getText();
-		String apellidos = panelFormularios.crearApellido.getText();
-		int dni = Integer.parseInt(panelFormularios.crearDni.getText());
-		String direccion = panelFormularios.crearDireccion.getText();
-		String fecha = panelFormularios.crearFecha.getText();
-		
 		try {
+			String nombre = panelFormularios.crearNombre.getText();
+			String apellidos = panelFormularios.crearApellido.getText();
+			int dni = Integer.parseInt(panelFormularios.crearDni.getText());
+			String direccion = panelFormularios.crearDireccion.getText();
+			String fecha = panelFormularios.crearFecha.getText();
+			
 			String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+
 					"('"+ nombre +"','"+ apellidos +"', '" + direccion + "',' " + dni + "', '" + fecha + "');";
 			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
 			System.out.println("Datos insertados con exito!");
-		}catch(SQLException ex) {
+		}catch(SQLException | NumberFormatException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error al insertar datos.");
 		}
@@ -151,6 +156,20 @@ public class ControladorVista implements ActionListener {
 
 	public void borrar() {
 		// DELETE
+		Connection c = ConexionSQL.connection;
+		try {
+			int dni = Integer.parseInt(panelFormularios.borrarTexfield.getText());
+			
+			String query = "DELETE FROM clientes "+
+					"WHERE dni="+dni+";";
+			System.out.println(query);
+			Statement st = c.createStatement();
+			st.executeUpdate(query);
+			System.out.println("Cliente borrado con exito!");
+		}catch(SQLException | NumberFormatException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error al insertar datos.");
+		}
 	}
 	
 	public void modificar() {
