@@ -8,6 +8,9 @@ public class App
 {
     public static void main( String[] args )
     {
+    	ControladorVista cv = new ControladorVista();
+    	cv.iniciarVista();
+    	
         ConexionSQL csql = new ConexionSQL();
         Clientes c = new Clientes();
 

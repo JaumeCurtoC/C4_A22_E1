@@ -1,5 +1,6 @@
 package controllers;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,15 +24,33 @@ public class ControladorVista implements ActionListener {
 	public void agregarEventos() {
 		panelOpciones.btnCrearCliente.addActionListener(this);
 		panelOpciones.btnBuscarCliente.addActionListener(this);
+		panelOpciones.btnEliminarCliente.addActionListener(this);
+		panelOpciones.btnListarClientes.addActionListener(this);
+		panelOpciones.btnModificarCliente.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(panelOpciones.btnBuscarCliente == e.getSource()) {
-			System.out.println("clickeaste buscar");
+			selectCard(cframe.panelFormularios, "buscar");
+			
 		} else if(panelOpciones.btnCrearCliente == e.getSource()) {
-			System.out.println("clickeaste crear");
+			selectCard(cframe.panelFormularios, "crear");
+			
+		} else if(panelOpciones.btnEliminarCliente  == e.getSource()) {
+			selectCard(cframe.panelFormularios, "borrar");
+			
+		} else if(panelOpciones.btnModificarCliente == e.getSource()) {
+			selectCard(cframe.panelFormularios, "actualizar");
+			
+		} else if(panelOpciones.btnListarClientes == e.getSource()) {
+			//función que lista los usuarios
 		}
+	}
+	
+	public void selectCard(JPanel container, String carta) {
+		CardLayout cl = (CardLayout)container.getLayout();
+		cl.show(container, carta);
 	}
 	
 

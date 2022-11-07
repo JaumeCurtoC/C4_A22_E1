@@ -17,6 +17,7 @@ public class ClienteFrame extends JFrame {
 	public JPanel contentPane;
 	public JPanel panelOpciones;
 	public JPanel panelFormularios;
+	public JPanel panelContainer;
 
 
 	public ClienteFrame(JPanel optionPanel, JPanel formPanel) {
@@ -34,13 +35,12 @@ public class ClienteFrame extends JFrame {
 		panelOpciones = optionPanel;
 		
 		/*-----------PANEL CONTAINER FORMULARIOS Y RESULTADOS --------------*/
-		JPanel panelContainer = new JPanel();
+		panelContainer = new JPanel();
 		panelContainer.setBounds(142, 11, 177, 239);
 		
 		panelContainer.setLayout(new CardLayout(0, 0));
 		
 		JPanel panelResultados = new JPanel();
-		panelContainer.add(panelResultados);
 		panelResultados.setLayout(null);
 		
 		JLabel resultadoLabel = new JLabel("");
@@ -49,6 +49,7 @@ public class ClienteFrame extends JFrame {
 		
 		panelFormularios = formPanel;
 		panelContainer.add(panelFormularios);
+		panelContainer.add(panelResultados);
 		
 		contentPane.add(panelOpciones);
 		contentPane.add(panelContainer);
