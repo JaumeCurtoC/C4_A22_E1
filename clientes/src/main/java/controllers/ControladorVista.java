@@ -18,7 +18,6 @@ public class ControladorVista implements ActionListener {
 	private ClienteFrame cframe;
 	private PanelOpciones panelOpciones;
 	private PanelFormularios panelFormularios;
-	private ControladorDB controlDB;
 
 	private ConexionSQL conSQL = new ConexionSQL();
 
@@ -68,22 +67,10 @@ public class ControladorVista implements ActionListener {
 			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "actualizar");
 
-		} else if (panelOpciones.btnListarClientes == e.getSource()) {
-			listar();
-
-		} else if (panelFormularios.crearButton == e.getSource()) {
-			crear();
-
-		} else if (panelFormularios.borrarButton == e.getSource()) {
-			String dni = panelFormularios.borrarTexfield.getText();
-
-		} else if (panelFormularios.buscarButton == e.getSource()) {
-			buscar();
-
-		} else if (panelFormularios.actualizarButton == e.getSource()) {
-			
 		} else if(panelOpciones.btnListarClientes == e.getSource()) {
-			//función que lista los usuarios
+			conSQL.conectar();
+			listar();
+			conSQL.closeConnection();
 			
 		} else if(panelFormularios.crearButton == e.getSource()) {
 			conSQL.conectar();
@@ -101,11 +88,9 @@ public class ControladorVista implements ActionListener {
 			conSQL.closeConnection();
 			
 		} else if(panelFormularios.actualizarButton == e.getSource()) {
-			String nombre = panelFormularios.actualizarNombre.getText();
-			String apellidos = panelFormularios.actualizarApellidos.getText();
-			String dni = panelFormularios.actualizarDNI.getText();
-			String direccion = panelFormularios.actualizarDireccion.getText();
-			String fecha = panelFormularios.actualizarFecha.getText();
+			conSQL.conectar();
+			modificar();
+			conSQL.closeConnection();
 		}
 	}
 
