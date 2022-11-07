@@ -17,17 +17,12 @@ import vista.*;
 public class ControladorVista implements ActionListener {
 	private ClienteFrame cframe;
 	private PanelOpciones panelOpciones;
-	private PanelFormularios panelFormularios;<<<<<<<HEAD
+	private PanelFormularios panelFormularios;
 	private ControladorDB controlDB;
-
-	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios,
-			ControladorDB conDb) {
-=======
 
 	private ConexionSQL conSQL = new ConexionSQL();
 
 	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios) {
->>>>>>> f7d0d65c7d0713a0e6ff6e2d2101bdf8be0ffe96
 		super();
 		this.cframe = cframe;
 		this.panelOpciones = panelOpciones;
@@ -72,7 +67,6 @@ public class ControladorVista implements ActionListener {
 		} else if (panelOpciones.btnModificarCliente == e.getSource()) {
 			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "actualizar");
-<<<<<<< HEAD
 
 		} else if (panelOpciones.btnListarClientes == e.getSource()) {
 			listar();
@@ -87,7 +81,6 @@ public class ControladorVista implements ActionListener {
 			buscar();
 
 		} else if (panelFormularios.actualizarButton == e.getSource()) {
-=======
 			
 		} else if(panelOpciones.btnListarClientes == e.getSource()) {
 			//función que lista los usuarios
@@ -108,7 +101,6 @@ public class ControladorVista implements ActionListener {
 			conSQL.closeConnection();
 			
 		} else if(panelFormularios.actualizarButton == e.getSource()) {
->>>>>>> f7d0d65c7d0713a0e6ff6e2d2101bdf8be0ffe96
 			String nombre = panelFormularios.actualizarNombre.getText();
 			String apellidos = panelFormularios.actualizarApellidos.getText();
 			String dni = panelFormularios.actualizarDNI.getText();
