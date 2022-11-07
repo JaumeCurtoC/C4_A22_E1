@@ -4,19 +4,19 @@ import models.*;
 
 public class ControladorDB {
 	private ConexionSQL modelo;
-	private Clientes clientes;
+	private Clientes c;
 	
-	public ControladorDB(ConexionSQL modelo, Clientes clientes) {
-		super();
+	public ControladorDB(ConexionSQL modelo, Clientes c) {
 		this.modelo = modelo;
-		this.clientes = clientes;
+		this.c = c;
 	}
 
-	public static void iniciarDB() {
+	public void iniciarDB() {
 		modelo.connectar();
 		modelo.crearDB();
-		clientes.createTable();
-		clientes.insertClientes();
+		c.createTable();
+		c.insertClientes();
+		modelo.closeConnection();
 	}
 	
 	

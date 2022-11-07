@@ -21,8 +21,8 @@ public class Clientes {
 					+ "direccion VARCHAR(1250) DEFAULT NULL, " 
 					+ "dni INT(11) DEFAULT NULL," 
 					+ "fecha date DEFAULT NULL,"
-					+ "PRIMARY KEY (id),"
-					+ ")";
+					+ "PRIMARY KEY (id)"
+					+ ");";
 			st.executeUpdate(query);
 			System.out.println("Tabla creada con éxito!");
 

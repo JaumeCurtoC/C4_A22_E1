@@ -11,17 +11,13 @@ public class ConexionSQL {
 
 	static Connection connection;
 
-	public static void connectar() {
+	public void connectar() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// Password retirada por seguridad
 			connection = DriverManager.getConnection(
 					"jdbc:mysql://192.168.0.45:3306?useTimezone=true&serverTimezone=UTC", "remote", "Arcangel1999!");
 			System.out.println("Server Connected");
-			
-			
-			
-			
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("No se ha podido conectar con la base de datos.");
 			System.out.println(ex);
@@ -49,10 +45,8 @@ public class ConexionSQL {
 		}
 	}
 	
-	
-	
 	// M�todo para cerrar la conexi�n con la base de datos
-		public static void closeConnection() {
+		public void closeConnection() {
 			try {
 				connection.close();
 				System.out.println("Se ha finalizado la conexi�n con el servidor");
