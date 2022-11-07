@@ -3,11 +3,15 @@ package controllers;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import models.ConexionSQL;
 import vista.*;
 
 public class ControladorVista implements ActionListener {
@@ -64,5 +68,40 @@ public class ControladorVista implements ActionListener {
 		cl.show(container, carta);
 	}
 	
+	public void buscar() {
+		// SELECT
+	}
+	
+	public void crear() {
+		// INSERT VALUES
+		Connection c = ConexionSQL.connection;
+		String nombre = panelFormularios.textField.getText().toString();
+		String apellido = panelFormularios.textField_1.getText().toString();
+		String direccion = panelFormularios.textField_2.getText().toString();
+		int dni;
+		
+		try {
+			String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+
+					"('"+ nombre +"','"+ apellido +"','Margarita 1',87654321,'2022-03-12');";
+		
+			Statement st = c.createStatement();
+			st.executeUpdate(query);
+			System.out.println("Datos insertados con exito!");
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error al insertar datos.");
+		}
+	}
 
+	public void borrar() {
+		// DELETE
+	}
+	
+	public void modificar() {
+		// ALTER TABLE
+	}
+	
+	public void listar() {
+		// SELECT *
+	}
 }
