@@ -39,6 +39,11 @@ public class ClienteFrame extends JFrame {
 		
 		JPanel panelResultados = new JPanel();
 		panelContainer.add(panelResultados);
+		panelResultados.setLayout(null);
+		
+		JLabel resultadoLabel = new JLabel("");
+		resultadoLabel.setBounds(10, 5, 157, 120);
+		panelResultados.add(resultadoLabel);
 		
 		JPanel panelFormularios = new PanelFormularios();
 		panelContainer.add(panelFormularios);
