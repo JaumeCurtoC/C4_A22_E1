@@ -21,10 +21,6 @@ public class ClienteFrame extends JFrame {
 
 
 	public ClienteFrame(JPanel optionPanel, JPanel formPanel) {
-		setTitle("Clientes CRUD");
-		//podemos meterle un nuevo método donde se hará el exit on close y se cerrará la base de datos
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 345, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -53,6 +49,5 @@ public class ClienteFrame extends JFrame {
 		
 		contentPane.add(panelOpciones);
 		contentPane.add(panelContainer);
-		setVisible(true);
 	}
 }
