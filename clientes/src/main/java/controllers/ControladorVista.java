@@ -14,12 +14,14 @@ public class ControladorVista implements ActionListener {
 	private ClienteFrame cframe;
 	private PanelOpciones panelOpciones;
 	private PanelFormularios panelFormularios;
+	private ControladorDB controlDB;
 	
-	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios) {
+	public ControladorVista(ClienteFrame cframe, PanelOpciones panelOpciones, PanelFormularios panelFormularios, ControladorDB conDb) {
 		super();
 		this.cframe = cframe;
 		this.panelOpciones = panelOpciones;
 		this.panelFormularios = panelFormularios;
+		this.controlDB = conDb;
 		agregarEventos();
 	}
 
