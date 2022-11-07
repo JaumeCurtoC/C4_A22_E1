@@ -27,8 +27,8 @@ public class PanelFormularios extends JPanel {
 	public JButton borrarButton;
 	public JButton actualizarButton;
 	public JButton listarButton;
-	private JTextField textField;
 	private JLabel lblDniActual;
+	public JLabel resultadoBusqueda;
 
 	public PanelFormularios() {
 		setLayout(new CardLayout(0, 0));
@@ -104,6 +104,10 @@ public class PanelFormularios extends JPanel {
 		buscarButton = new JButton("Buscar");
 		buscarButton.setBounds(10, 55, 89, 23);
 		formularioBuscar.add(buscarButton);
+		
+		resultadoBusqueda = new JLabel("");
+		resultadoBusqueda.setBounds(10, 89, 133, 151);
+		formularioBuscar.add(resultadoBusqueda);
 		
 		/*--------------FORMULARIO BORRAR -----------------*/
 		JPanel formularioBorrar = new JPanel();

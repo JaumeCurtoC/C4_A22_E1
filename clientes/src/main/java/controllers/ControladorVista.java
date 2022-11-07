@@ -125,8 +125,7 @@ public class ControladorVista implements ActionListener {
 				data += "<br/>Dni: " + resultSet.getString("dni");
 				data += "<br/>Fecha: " + resultSet.getString("fecha") + "</html>";
 			}
-			nextImage(cframe.panelContainer);
-			cframe.labelResultados.setText(data);
+			panelFormularios.resultadoBusqueda.setText(data);
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error al insertar datos.");
