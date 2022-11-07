@@ -28,7 +28,7 @@ public class ConexionSQL {
 		}
 	}
 	
-	public void crearDB() {
+	public static void crearDB() {
 		try {
 			// Eliminar la base de datos en caso que exista
 			String query = "DROP DATABASE IF EXISTS clientesVideo";

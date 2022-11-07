@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class Clientes {
 	// M�todo para crear la tabla
-	public void createTable() {
+	public static void createTable() {
 		Connection c = ConexionSQL.connection;
 		try {
 			// Borrar la tabla en caso que exista
@@ -21,8 +21,8 @@ public class Clientes {
 					+ "direccion VARCHAR(1250) DEFAULT NULL, " 
 					+ "dni INT(11) DEFAULT NULL," 
 					+ "fecha date DEFAULT NULL,"
-					+ "PRIMARY KEY (id),"
-					+ ")";
+					+ "PRIMARY KEY (id)"
+					+ ");";
 			st.executeUpdate(query);
 			System.out.println("Tabla creada con éxito!");
 
@@ -33,7 +33,7 @@ public class Clientes {
 	}
 	
 	// M�todo para insertar datos en la tabla
-		public void insertClientes() {
+		public static void insertClientes() {
 			Connection c = ConexionSQL.connection;
 			try {
 				String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+
