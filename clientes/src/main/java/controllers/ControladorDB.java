@@ -16,7 +16,7 @@ public class ControladorDB {
 		modelo.crearDB();
 		c.createTable();
 		c.insertClientes();
-		modelo.closeConnection();
+		//modelo.closeConnection();
 	}
 	
 	

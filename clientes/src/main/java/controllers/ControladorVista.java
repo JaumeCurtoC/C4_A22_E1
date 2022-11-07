@@ -52,26 +52,26 @@ public class ControladorVista implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(panelOpciones.btnBuscarCliente == e.getSource()) {
+			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "buscar");
 			
 		} else if(panelOpciones.btnCrearCliente == e.getSource()) {
+			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "crear");
 			
 		} else if(panelOpciones.btnEliminarCliente  == e.getSource()) {
+			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "borrar");
 			
 		} else if(panelOpciones.btnModificarCliente == e.getSource()) {
+			firstImage(cframe.panelContainer);
 			selectCard(cframe.panelFormularios, "actualizar");
 			
 		} else if(panelOpciones.btnListarClientes == e.getSource()) {
 			//función que lista los usuarios
 			
 		} else if(panelFormularios.crearButton == e.getSource()) {
-			String nombre = panelFormularios.crearNombre.getText();
-			String apellidos = panelFormularios.crearApellido.getText();
-			String dni = panelFormularios.crearDni.getText();
-			String direccion = panelFormularios.crearDireccion.getText();
-			String fecha = panelFormularios.crearFecha.getText();
+			crear();
 			
 		} else if(panelFormularios.borrarButton == e.getSource()) {
 			String dni = panelFormularios.borrarTexfield.getText();
@@ -98,6 +98,11 @@ public class ControladorVista implements ActionListener {
 		cl.next(container);
 	}
 	
+	public void firstImage(JPanel container) {
+		CardLayout cl = (CardLayout) container.getLayout();
+		cl.first(container);
+	}
+	
 	public void buscar() {
 		Connection c = ConexionSQL.connection;
 		int dni = Integer.parseInt(panelFormularios.buscarTextfield.getText());
@@ -108,11 +113,11 @@ public class ControladorVista implements ActionListener {
 			java.sql.ResultSet resultSet;
 			resultSet = st.executeQuery(query);
 			while (resultSet.next()) {
-				data += "nombre: " + resultSet.getString("nombre");
-				data += "\nApellidos: " + resultSet.getString("apellido");
-				data += "\nDireccion: " + resultSet.getString("direccion");
-				data += "\nDni: " + resultSet.getString("dni");
-				data += "\nFecha: " + resultSet.getString("fecha");
+				data += "<html>nombre: " + resultSet.getString("nombre");
+				data += "<br/>Apellidos: " + resultSet.getString("apellido");
+				data += "<br/>Direccion: " + resultSet.getString("direccion");
+				data += "<br/>Dni: " + resultSet.getString("dni");
+				data += "<br/>Fecha: " + resultSet.getString("fecha") + "</html>";
 			}
 			nextImage(cframe.panelContainer);
 			cframe.labelResultados.setText(data);
@@ -127,14 +132,14 @@ public class ControladorVista implements ActionListener {
 		Connection c = ConexionSQL.connection;
 		String nombre = panelFormularios.crearNombre.getText();
 		String apellidos = panelFormularios.crearApellido.getText();
-		String dni = panelFormularios.crearDni.getText();
+		int dni = Integer.parseInt(panelFormularios.crearDni.getText());
 		String direccion = panelFormularios.crearDireccion.getText();
 		String fecha = panelFormularios.crearFecha.getText();
 		
 		try {
 			String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+
-					"('"+ nombre +"','"+ apellido +"','Margarita 1',87654321,'2022-03-12');";
-		
+					"('"+ nombre +"','"+ apellidos +"', '" + direccion + "',' " + dni + "', '" + fecha + "');";
+			System.out.println(query);
 			Statement st = c.createStatement();
 			st.executeUpdate(query);
 			System.out.println("Datos insertados con exito!");
