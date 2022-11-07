@@ -93,15 +93,29 @@ public class ControladorVista implements ActionListener {
 		cl.show(container, carta);
 	}
 	
+	public void nextImage(JPanel container) {
+		CardLayout cl = (CardLayout) container.getLayout();
+		cl.next(container);
+	}
+	
 	public void buscar() {
 		Connection c = ConexionSQL.connection;
 		int dni = Integer.parseInt(panelFormularios.buscarTextfield.getText());
+		String data = "";
 		try {
-			String query = "SELECT * FROM clientes";
-		
+			String query = "SELECT * FROM clientes WHERE dni=" + dni + ";";
 			Statement st = c.createStatement();
-			st.executeUpdate(query);
-			System.out.println("Datos insertados con exito!");
+			java.sql.ResultSet resultSet;
+			resultSet = st.executeQuery(query);
+			while (resultSet.next()) {
+				data += "nombre: " + resultSet.getString("nombre");
+				data += "\nApellidos: " + resultSet.getString("apellido");
+				data += "\nDireccion: " + resultSet.getString("direccion");
+				data += "\nDni: " + resultSet.getString("dni");
+				data += "\nFecha: " + resultSet.getString("fecha");
+			}
+			nextImage(cframe.panelContainer);
+			cframe.labelResultados.setText(data);
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error al insertar datos.");
@@ -111,10 +125,11 @@ public class ControladorVista implements ActionListener {
 	public void crear() {
 		// INSERT VALUES
 		Connection c = ConexionSQL.connection;
-		String nombre = panelFormularios.textField.getText().toString();
-		String apellido = panelFormularios.textField_1.getText().toString();
-		String direccion = panelFormularios.textField_2.getText().toString();
-		int dni;
+		String nombre = panelFormularios.crearNombre.getText();
+		String apellidos = panelFormularios.crearApellido.getText();
+		String dni = panelFormularios.crearDni.getText();
+		String direccion = panelFormularios.crearDireccion.getText();
+		String fecha = panelFormularios.crearFecha.getText();
 		
 		try {
 			String query = "INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) values"+
