@@ -26,7 +26,7 @@ public class ControladorVista implements ActionListener {
 	public void iniciarVista() {
 		cframe.setTitle("Clientes CRUD");
 		cframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		cframe.setBounds(100, 100, 345, 300);
+		cframe.setBounds(100, 100, 345, 350);
 		cframe.setVisible(true);
 	}
 	

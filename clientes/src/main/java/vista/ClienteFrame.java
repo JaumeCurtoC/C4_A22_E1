@@ -32,7 +32,7 @@ public class ClienteFrame extends JFrame {
 		
 		/*-----------PANEL CONTAINER FORMULARIOS Y RESULTADOS --------------*/
 		panelContainer = new JPanel();
-		panelContainer.setBounds(142, 11, 177, 239);
+		panelContainer.setBounds(142, 11, 177, 269);
 		
 		panelContainer.setLayout(new CardLayout(0, 0));
 		
@@ -40,7 +40,7 @@ public class ClienteFrame extends JFrame {
 		panelResultados.setLayout(null);
 		
 		JLabel resultadoLabel = new JLabel("");
-		resultadoLabel.setBounds(10, 5, 157, 120);
+		resultadoLabel.setBounds(10, 5, 157, 150);
 		panelResultados.add(resultadoLabel);
 		
 		panelFormularios = formPanel;
